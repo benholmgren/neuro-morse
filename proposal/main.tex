@@ -17,21 +17,24 @@ The inner workings of the human brain are an extraordinary frontier. And fascina
  The main insight behind the paper is that neurons have a tree-like branching structure, and it may be helpful to categorize them based on their branching.
  Namely, it may be pertinent to use techniques from persistent homology to provide some kind of insight into how to categorize neurons. This is what our group
  plans to focus on for our final project in csci 432. Specifically, the Topological Morphology Descriptor (TMD) algorithm outlined in her paper. On a high level, this algorithm
- takes in a neuron embedded in a metric space as input, and computes a radial filtration on the neuron where birth and death events are measured by the persistence of each
+ takes in neuron structural data embedded in a metric space as input, and computes a radial filtration on the neuron where birth and death events are measured by the persistence of each
  various branch in the neuron. The algorithm ensures as output a persistence barcode, topologically summarizing the tree structure of the neuron. 
+
+
  
  In practice, Dr. Hess provides in her talks and in the paper that this simple method of persistent homology is actually often quite effective in the categorization of a neuron.
  As a result, she presents persistent homology and computational topology solutions as important for the future of understanding the structure of intricate pieces of the brain.
  This core algorithm is central for much of her work, and indeed is showing great promise the more it has been investigated. One of the major strengths of her algorithm is its runtime-
- linear in the number of simplices. One possible shortfall however is its space complexity, which, though not named in the algorithm, is dependent on the number of active child nodes down the tree
- (aka neuron) at that moment in the filtration. These nodes correspondingly are saved at each current parent node in the filtration. We believe that the functionality of this filtration may be
+ linear in the number of simplices. However, when considering larger scale neuron networks, space complexity may play an important role in algorithm effectiveness. One possible shortfall of Dr. Hess' procedure is its space complexity, which, though not named in the algorithm, is dependent on the number of active child nodes down the tree
+ (aka neuron) at that moment in the filtration.
+ These nodes correspondingly are saved at each current parent node in the filtration. We believe that the functionality of this filtration may be
  achieved equivalently with a discrete Morse function, which is included in our +1 portion of the project. In fact, a discrete Morse function may not only achieve equivalent performance to the filtration,
  but it may also provide some exciting insights when comparing different types of neurons in terms of their structure in an attempt to shed some light on the reasoning behind different neuron functionalities as
- a whole.
+ a whole. We are super optimistic we can find evidence to prefer morse theory over a standard filtration as well as maybe contribute a little to some neuron theory!
 
 \section*{Proposed Extensions}
 As mentioned above, we plan to investigate discrete Morse functions as a potential alternative to the filtration provided in Dr. Hess' TMD algorithm. In doing so, we hope to provide a formal space complexity analysis
-of her algorithm, and compare it to known, prevalent algorithms in discrete Morse theory, such as those introduced by Holmgren, et al. We conjecture that using a discrete Morse function in place of her filtration will have
+of her algorithm, and compare it to known, prevalent algorithms in discrete Morse theory, such as those introduced by Holmgren, et al (SHAMELESS). We conjecture that using a discrete Morse function in place of her filtration will have
 no disadvantages in terms of performance in categorizing neurons, in runtime, and it may in fact produce slight space complexity improvements. This conjecture certainly is to be further investigated, but the authors
 are confident in this assertion. So why then would we bother to use a discrete Morse function in place of the already widely accepted filtration? This boils down to an embedded property inherent to a discrete Morse 
 function. Morse functions provide an inherent set of instructions as to how to collapse simplicial collapses without altering their topology. We are choosing to utilize discrete Morse functions in this context because they 
@@ -41,7 +44,8 @@ to pinpoint specific neighborhoods within neurons which might have implications 
 sections of neurons, we could pinpoint differences in different kinds of neurons, and thus more effectively categorize neurons by their structure.
 In doing so, we may gain an important insight into the actual local structure of different kinds of neurons, and thus, a better
 idea of what structurally differentiates function within different kinds of neurons. We are excited by the possibilities that this project may have in both improving the actual categorization of neurons in terms of space complexity,
-as well as structurally pinpointing the active sections within neurons which may potentially determine functionality in specific cases. 
+as well as structurally pinpointing the active sections within neurons which may potentially determine functionality in specific cases. We agree it would be 
+nothing short of radical if we found classification patterns in strategically collaped neurons.
 
 \section*{Works cited}
 \href{hess.pdf}{\textit{A Topological Representation of Branching Neuronal Morphologies}, Hess et al.}
