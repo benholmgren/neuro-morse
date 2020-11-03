@@ -9,22 +9,32 @@
 \section*{Background}
 In all, our project can be divided into a series of tasks, as follows:
 \begin{enumerate}
-	\item To begin, we need to actually analyze and fully understand the TMD algorithm
+	\item (Main project - analyze algo) To begin, we need to actually analyze and fully understand the TMD algorithm
 		as proposed by Hess et al. in terms of inputs, outputs, and time/space complexity. 
 		Specifications of the inputs, outputs and the time complexity of the TMD algorithm are
 		included in Hess' work, but there is no rigorous analysis of the space complexity of
 		the algorithm. We've provided a rigorous statement of all of these items below.
-	\item We also need to show that we can generate a discrete Morse function which can do
-		an equivalent task to the filtration used in the TMD algorithm. Functionally, we 
-		need to show correctness if a Morse function were used in place of the filtration.
-		To do this, we need to modify the definitions inherent in a discrete Morse
-		function to fit the critical cells on a neuron related to branching.
-	\item We need to show that using Morse theory yields some advantages. Namely,
-		we need to show that using Morse theory retains the original time complexity of the
-		TMD algorithm, but using Morse theory yields savings with regards to space complexity.
+	\item (Propose new algo, show does same stuff) The focal point of this project is to demonstrate how discrete morse theory can not only be used
+		as an equivalent route to classifying neurons, but also to argue for its superiority. 
+		Step two is basically just the first part - proving we can substitute a filtration and
+		barcode analysis (TMD) with generating a discrete morse function ans subsequent analysis.
+		Since Kathryn Hess has already shown classification of neurons can be attributed to branching,
+		and branching occurs at critical points, discrete morse shows promise for classification of neurons!
+		
+	\item (Space Complexity better, time complexity same) The next step is obviously proof of morse theory superiority. While we think there may be
+		several, the primary advantage for morse theory is space complexity. According to a random
+		google search, the human brain contains nearly 86 million neurons, meaning with regard to 
+		simulating real brain function, the ability to represent singular neurons with better space
+		complexity would be a major contribution. Additionaly, we need to show that using Morse theory
+		retains the original time complexity of the TMD algorithm to make sure we have only benefits.
 	\item We also hope to show additional features that using a discrete Morse function
-		allows. Specifically, we want to show that using Morse theory allows for the pinpointing
+		allows. We are suspicious of two other advantages morse theory may provide the community at large.
+		First, we want to show that using Morse theory allows for the pinpointing
 		of specific regions within a neuron, which may relate to neuron functionality.
+		Kathryn Hess does do something similar, but we think we are adding something unique.
+		Second, we think searching the morse function data structure is much faster than searching
+		the lengthy chain of branches utilized in the TMD algorithm, which we are suspicious could 
+		also be meaningful..... who knows what kind of buried treasure lies within.....
 \end{enumerate}
 
 \section*{Progress}
@@ -54,8 +64,12 @@ Thus far, we've successfully accomplished tasks 1-3. Our progress for each is lo
 		$f$ is injective. And, since the underlying vertex data is also guaranteed to be sorted radially along the neuron, we are able
 		to improve the functionality of Holmgren et al. Indeed, the runtime in Holmgren et al. is guaranteed to remain linear with respect
 		to the simplices of the neuron (i.e. roughly double the number of vertices for a graph), so the TMD algorithm has equivalent runtime.
+		We note the logic behind morse theory feasability is contingent on critical poinst being equivalent to branching. 
+		The proof of our chosen morse function to be 'high performing' morse function is a trivial $\iff$ proof we will go into more detail in 
+		our formal writeup. 
 		However, the algorithm by Holmgren et al. when adapted to a lexicographically sorted Hasse diagram of the underlying neuron
 		is able to operate with constant space complexity. Improving the space complexity of the TMD algorithm.
+		As we mentioned earlier, this my friends is a game changer.
 \end{enumerate}
 
 \section*{Remaining Work}
@@ -63,6 +77,17 @@ As for the remainder of the project, we still need to work on specifying how to 
 structural differences within different kinds of neurons. We have a rough idea of how to go about this, but need to elaborate fully on
 the theory behind this process. And, we need to more formally write up our developments thus far, especially our framing of the problem
 and our provided improvements with regards to its space complexity.
+The abstract math we were kind of thinking about is we know the morse functions
+can classify neurons, meaning they are some kind of invariant on differing 
+neuronal spaces. Our hope, then, is to find some kind of distance between 
+morse functions to further hone in on what specifically differentiates
+functionality. Kathryn Hess does some neat heat maps, but morse functions could
+give us much more specific information on key differences. The general consensus
+of the neuroscience community is nobody knows what parts of the neuron are 
+super meaningful, so we want to explore what morse functions can tell us.
+Last, we wanted to look into whether or not it is useful to search in the morse
+function data structure, because as we mentioned earlier, it is much easier than
+sifting through the memoized string of branches used in the TMD algo.
 
 \section*{Works cited}
 \href{hess.pdf}{\textit{A Topological Representation of Branching Neuronal Morphologies}, Hess et al.}
